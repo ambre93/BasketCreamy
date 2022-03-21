@@ -1,6 +1,8 @@
 package fr.basketcreamy.entities;
 
 public class Params {
+	
+	//commentaire
 	private Integer id;
 	private byte[] cle_cryptage_pwd;
 	private byte[] cle_cryptage_cp;
