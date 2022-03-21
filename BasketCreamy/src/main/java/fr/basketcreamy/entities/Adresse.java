@@ -1,24 +1,42 @@
 package fr.basketcreamy.entities;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "adresse")
 public class Adresse {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	
 	private String numero;
 	private String rue;
 	private String codePostal;
-	private Integer utilisateur;
+	
+	@ManyToOne
+	@JoinColumn(name = "utilisateur_id", nullable = false, insertable = true)
+	private Utilisateur utilisateur;
 	
 	public Adresse() {
 		
 	}
 
-	public Adresse(String numero, String rue, String codePostal, Integer utilisateur) {
+	public Adresse(String numero, String rue, String codePostal, Utilisateur utilisateur) {
 		super();
 		this.numero = numero;
 		this.rue = rue;
 		this.codePostal = codePostal;
 		this.utilisateur = utilisateur;
 	}
+
+
 
 	public Integer getId() {
 		return id;
@@ -52,14 +70,15 @@ public class Adresse {
 		this.codePostal = codePostal;
 	}
 
-	public Integer getUtilisateur() {
+	public Utilisateur getUtilisateur() {
 		return utilisateur;
 	}
 
-	public void setUtilisateur(Integer utilisateur) {
+	public void setUtilisateur(Utilisateur utilisateur) {
 		this.utilisateur = utilisateur;
 	}
-	
+
+
 	
 	
 	

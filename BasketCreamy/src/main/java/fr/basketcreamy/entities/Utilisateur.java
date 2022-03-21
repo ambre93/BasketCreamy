@@ -3,6 +3,10 @@ package fr.basketcreamy.entities;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
+
 public class Utilisateur {
 	private Integer id;
 	private String nom;
@@ -17,6 +21,8 @@ public class Utilisateur {
 	private List<Commande> commandes;
 	private List<CartePaiement> cartesDePaiement;
 	private List<Commentaire> commentaires;
+	
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "utilisateur")
 	private List<ArticlePanier> panier;
 	
 	public Utilisateur() {

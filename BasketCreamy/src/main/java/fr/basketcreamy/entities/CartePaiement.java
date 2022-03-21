@@ -2,20 +2,42 @@ package fr.basketcreamy.entities;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "carte_paiement")
 public class CartePaiement {
-	//test
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	
 	private String nomProprietaire;
+	
 	private String prenomProprietaire;
+	
 	private byte[] numero;
+	
 	private Date dateFinValidite;
+	
 	private byte[] cryptogramme;
-	private Integer utilisateur;
+	
+	@ManyToOne
+	@JoinColumn(name = "utilisateur_id", nullable = false, insertable = true)
+	private Utilisateur utilisateur;
+	
 	public CartePaiement() {
 		
 	}
+	
 	public CartePaiement(String nomProprietaire, String prenomProprietaire, byte[] numero, Date dateFinValidite,
-			byte[] cryptogramme, Integer utilisateur) {
+			byte[] cryptogramme, Utilisateur utilisateur) {
 		super();
 		this.nomProprietaire = nomProprietaire;
 		this.prenomProprietaire = prenomProprietaire;
@@ -24,6 +46,7 @@ public class CartePaiement {
 		this.cryptogramme = cryptogramme;
 		this.utilisateur = utilisateur;
 	}
+
 	public Integer getId() {
 		return id;
 	}
@@ -60,14 +83,15 @@ public class CartePaiement {
 	public void setCryptogramme(byte[] cryptogramme) {
 		this.cryptogramme = cryptogramme;
 	}
-	public Integer getUtilisateur() {
+
+	public Utilisateur getUtilisateur() {
 		return utilisateur;
 	}
-	public void setUtilisateur(Integer utilisateur) {
+
+	public void setUtilisateur(Utilisateur utilisateur) {
 		this.utilisateur = utilisateur;
 	}
-	
-	
+		
 	
 
 }

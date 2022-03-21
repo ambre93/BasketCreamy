@@ -5,9 +5,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "article_panier")
 public class ArticlePanier {
 	
 	@Id
@@ -17,7 +20,11 @@ public class ArticlePanier {
 	@OneToOne
 	@JoinColumn(name = "article_id")
 	private Article article;
+	
 	private Integer quantite;
+	
+	@ManyToOne
+	@JoinColumn(name = "utilisateur_id", nullable = false, insertable = true)
 	private Utilisateur utilisateur;
 	
 	public ArticlePanier() {
