@@ -2,8 +2,19 @@ package fr.basketcreamy.entities;
 
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+@Entity
 public class Article {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	
 	private String nom;
 	private String description;
 	private Double prix;
@@ -12,6 +23,8 @@ public class Article {
 	private Boolean isVendable;
 	private String photos;
 	private String videos;
+	
+	@OneToMany(mappedBy="commentaires")
 	private List<Commentaire> commentaires;
 	
 	public Article() {

@@ -1,28 +1,42 @@
 package fr.basketcreamy.entities;
 
+import java.util.List;
+
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Categorie {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	
 	private String nom;
 	private byte remise;
 	private boolean isRemiseCumulable;
 	private String photo;
-	private Integer article;
+	
+	@OneToMany(mappedBy="articles")
+	private List<Article> articles;
 	
 	public Categorie() {
 		
 			}
 	
-	public Categorie(String nom, byte remise, boolean isRemiseCumulable, String photo, Integer article) {
+	public Categorie(String nom, byte remise, boolean isRemiseCumulable, String photo, List<Article> articles) {
 		super();
 		this.nom = nom;
 		this.remise = remise;
 		this.isRemiseCumulable = isRemiseCumulable;
 		this.photo = photo;
-		this.article = article;
+		this.articles = articles;
 	}
+
+
 
 	public Integer getId() {
 		return id;
@@ -64,15 +78,16 @@ public class Categorie {
 		this.photo = photo;
 	}
 
-	public Integer getArticle() {
-		return article;
-	}
+	
+	public List<Article> getArticles() {
+			return articles;
+		}
 
-	public void setArticle(Integer article) {
-		this.article = article;
-	}
-	
-	
+	public void setArticles(List<Article> articles) {
+			this.articles = articles;
+		}
 	
 
 }
+
+	

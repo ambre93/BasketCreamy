@@ -1,20 +1,27 @@
 package fr.basketcreamy.entities;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+
+@Entity
 public class ArticlePanier {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	private Integer article;
+	
+	@OneToOne
+	@JoinColumn(name = "article_id")
+	private Article article;
 	private Integer quantite;
-	private Integer utilisateur;
+	private Utilisateur utilisateur;
 	
 	public ArticlePanier() {
 
-	}
-
-	public ArticlePanier(Integer article, Integer quantite, Integer utilisateur) {
-		super();
-		this.article = article;
-		this.quantite = quantite;
-		this.utilisateur = utilisateur;
 	}
 
 	public Integer getId() {
@@ -25,11 +32,11 @@ public class ArticlePanier {
 		this.id = id;
 	}
 
-	public Integer getArticle() {
+	public Article getArticle() {
 		return article;
 	}
 
-	public void setArticle(Integer article) {
+	public void setArticle(Article article) {
 		this.article = article;
 	}
 
@@ -41,12 +48,13 @@ public class ArticlePanier {
 		this.quantite = quantite;
 	}
 
-	public Integer getUtilisateur() {
+	public Utilisateur getUtilisateur() {
 		return utilisateur;
 	}
 
-	public void setUtilisateur(Integer utilisateur) {
+	public void setUtilisateur(Utilisateur utilisateur) {
 		this.utilisateur = utilisateur;
 	}
+
 	
 }
