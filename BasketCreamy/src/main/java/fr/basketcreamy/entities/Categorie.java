@@ -1,5 +1,6 @@
 package fr.basketcreamy.entities;
 
+@Entity
 public class Categorie {
 	private Integer id;
 	private String nom;
