@@ -1,5 +1,7 @@
 package fr.basketcreamy.entities;
 
+import java.util.List;
+
 public class Article {
 	private Integer id;
 	private String nom;

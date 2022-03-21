@@ -1,5 +1,8 @@
 package fr.basketcreamy.entities;
 
+import java.util.Date;
+import java.util.List;
+
 public class Utilisateur {
 	private Integer id;
 	private String nom;
@@ -15,6 +18,5 @@ public class Utilisateur {
 	private List<CartePaiement> cartesDePaiement;
 	private List<Commentaire> commentaires;
 	private List<ArticlePanier> panier;
-	
-	
+
 }
