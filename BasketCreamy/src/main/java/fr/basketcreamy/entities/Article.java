@@ -10,5 +10,5 @@ public class Article {
 	private Boolean isVendable;
 	private String photos;
 	private String videos;
-	private String commentaires;
+	private List<Commentaire> commentaires;
 }
