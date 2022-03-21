@@ -1,5 +1,7 @@
 package fr.basketcreamy.entities;
 
+import javax.persistence.Entity;
+
 @Entity
 public class Categorie {
 	private Integer id;
