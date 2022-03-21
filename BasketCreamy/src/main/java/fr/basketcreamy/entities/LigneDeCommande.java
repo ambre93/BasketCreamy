@@ -4,7 +4,7 @@ public class LigneDeCommande {
 	private Integer id;
 	private Integer quantite;
 	private Double prixUnitaire;
-	private Integer remiseArticle;
+	private Byte remiseArticle;
 	private Integer commande;
 	private Integer article;
 	
@@ -12,7 +12,7 @@ public class LigneDeCommande {
 
 	}
 
-	public LigneDeCommande(Integer quantite, Double prixUnitaire, Integer remiseArticle, Integer commande,
+	public LigneDeCommande(Integer quantite, Double prixUnitaire, Byte remiseArticle, Integer commande,
 			Integer article) {
 		super();
 		this.quantite = quantite;
