@@ -1,6 +1,5 @@
 package fr.basketcreamy.entities;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -22,8 +21,8 @@ public class Utilisateur {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String nom;
-	private String Prenom;
-	private Date dateNaissance;
+	private String prenom;
+	private String dateNaissance;
 	private boolean isActif;
 	private EnumProfil profil;
 	private String email;
@@ -49,12 +48,12 @@ public class Utilisateur {
 		
 	}
 
-	public Utilisateur(String nom, String prenom, Date dateNaissance, boolean isActif, EnumProfil profil, String email,
+	public Utilisateur(String nom, String prenom, String dateNaissance, boolean isActif, EnumProfil profil, String email,
 			byte[] password, String telephone, List<Adresse> adresses, List<Commande> commandes,
 			List<CartePaiement> cartesDePaiement, List<Commentaire> commentaires, List<ArticlePanier> panier) {
 		super();
 		this.nom = nom;
-		Prenom = prenom;
+		this.prenom = prenom;
 		this.dateNaissance = dateNaissance;
 		this.isActif = isActif;
 		this.profil = profil;
@@ -85,19 +84,19 @@ public class Utilisateur {
 	}
 
 	public String getPrenom() {
-		return Prenom;
+		return prenom;
 	}
 
 	public void setPrenom(String prenom) {
-		Prenom = prenom;
+		this.prenom = prenom;
 	}
 
-	public Date getDateNaissance() {
+	public String getDateNaissance() {
 		return dateNaissance;
 	}
 
-	public void setDateNaissance(Date dateNaissance) {
-		this.dateNaissance = dateNaissance;
+	public void setDateNaissance(String string) {
+		this.dateNaissance = string;
 	}
 
 	public boolean isActif() {
