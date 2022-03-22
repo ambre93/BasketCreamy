@@ -4,22 +4,42 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
+import fr.basketcreamy.enums.EnumProfil;
+
+@Entity
+@Table(name = "utilisateur")
 public class Utilisateur {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String nom;
 	private String Prenom;
 	private Date dateNaissance;
 	private boolean isActif;
-	private String profil;
+	private EnumProfil profil;
 	private String email;
 	private byte[] password;
 	private String telephone;
+	
+	@OneToMany(mappedBy="adresses")
 	private List<Adresse> adresses;
+	
+	@OneToMany(mappedBy="commandes")
 	private List<Commande> commandes;
+	
+	@OneToMany(mappedBy="cartesDePaiement")
 	private List<CartePaiement> cartesDePaiement;
+	
+	@OneToMany(mappedBy="commentaires")
 	private List<Commentaire> commentaires;
 	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "utilisateur")
@@ -29,7 +49,7 @@ public class Utilisateur {
 		
 	}
 
-	public Utilisateur(String nom, String prenom, Date dateNaissance, boolean isActif, String profil, String email,
+	public Utilisateur(String nom, String prenom, Date dateNaissance, boolean isActif, EnumProfil profil, String email,
 			byte[] password, String telephone, List<Adresse> adresses, List<Commande> commandes,
 			List<CartePaiement> cartesDePaiement, List<Commentaire> commentaires, List<ArticlePanier> panier) {
 		super();
@@ -88,11 +108,11 @@ public class Utilisateur {
 		this.isActif = isActif;
 	}
 
-	public String getProfil() {
+	public EnumProfil getProfil() {
 		return profil;
 	}
 
-	public void setProfil(String profil) {
+	public void setProfil(EnumProfil profil) {
 		this.profil = profil;
 	}
 

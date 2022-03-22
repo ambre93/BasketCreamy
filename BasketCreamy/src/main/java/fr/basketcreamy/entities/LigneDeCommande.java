@@ -1,19 +1,39 @@
 package fr.basketcreamy.entities;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "ligneDeCommande")
 public class LigneDeCommande {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private Integer quantite;
 	private Double prixUnitaire;
 	private Byte remiseArticle;
-	private Integer commande;
-	private Integer article;
+	
+	@ManyToOne
+	@JoinColumn(name = "commande_id", nullable = false, insertable = true)
+	private Commande commande;
+	
+	@OneToOne
+	@JoinColumn(name = "article_id", nullable = false, insertable = true)
+	private Article article;
 	
 	public LigneDeCommande() {
 
 	}
 
-	public LigneDeCommande(Integer quantite, Double prixUnitaire, Byte remiseArticle, Integer commande,
-			Integer article) {
+	public LigneDeCommande(Integer quantite, Double prixUnitaire, Byte remiseArticle, Commande commande,
+			Article article) {
 		super();
 		this.quantite = quantite;
 		this.prixUnitaire = prixUnitaire;
@@ -46,29 +66,29 @@ public class LigneDeCommande {
 		this.prixUnitaire = prixUnitaire;
 	}
 
-	public Integer getRemiseArticle() {
+	public Byte getRemiseArticle() {
 		return remiseArticle;
 	}
 
-	public void setRemiseArticle(Integer remiseArticle) {
+	public void setRemiseArticle(Byte remiseArticle) {
 		this.remiseArticle = remiseArticle;
 	}
 
-	public Integer getCommande() {
+	public Commande getCommande() {
 		return commande;
 	}
 
-	public void setCommande(Integer commande) {
+	public void setCommande(Commande commande) {
 		this.commande = commande;
 	}
 
-	public Integer getArticle() {
+	public Article getArticle() {
 		return article;
 	}
 
-	public void setArticle(Integer article) {
+	public void setArticle(Article article) {
 		this.article = article;
 	}
-	
+
 	
 }

@@ -3,7 +3,22 @@ package fr.basketcreamy.entities;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "commande")
 public class Commande {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private Integer numero;
 	private Date dateCreation;
@@ -11,10 +26,24 @@ public class Commande {
 	private Double totalRemise;
 	private Double fraisExpedition;
 	private Double totalGeneral;
-	private String adresseFacturation;
-	private String adresseLivraison;
-	private Long cartePaiementDefaut;
-	private Integer utilisateur;
+	
+	@OneToOne
+	@JoinColumn(name = "adresseFact_id")
+	private Adresse adresseFacturation;
+	
+	@OneToOne
+	@JoinColumn(name = "adresseLiv_id")
+	private Adresse adresseLivraison;
+	
+	@OneToOne
+	@JoinColumn(name = "cartePaiement_id")
+	private CartePaiement cartePaiementDefaut;
+	
+	@ManyToOne
+	@JoinColumn(name = "utilisateur_id", nullable = false, insertable = true)
+	private Utilisateur utilisateur;
+	
+	@OneToMany(mappedBy="lignes_commande")
 	private List<LigneDeCommande> lignesCommande;
 	
 	
@@ -24,8 +53,8 @@ public class Commande {
 
 
 	public Commande(Integer numero, Date dateCreation, Date dateLivraison, Double totalRemise, Double fraisExpedition,
-			Double totalGeneral, String adresseFacturation, String adresseLivraison, Long cartePaiementDefaut,
-			Integer utilisateur, List<LigneDeCommande> lignesCommande) {
+			Double totalGeneral, Adresse adresseFacturation, Adresse adresseLivraison,
+			CartePaiement cartePaiementDefaut, Utilisateur utilisateur, List<LigneDeCommande> lignesCommande) {
 		super();
 		this.numero = numero;
 		this.dateCreation = dateCreation;
@@ -40,7 +69,6 @@ public class Commande {
 		this.lignesCommande = lignesCommande;
 	}
 
-
 	public Integer getId() {
 		return id;
 	}
@@ -49,8 +77,7 @@ public class Commande {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-
-
+	
 	public Integer getNumero() {
 		return numero;
 	}
@@ -111,42 +138,42 @@ public class Commande {
 	}
 
 
-	public String getAdresseFacturation() {
+	public Adresse getAdresseFacturation() {
 		return adresseFacturation;
 	}
 
 
-	public void setAdresseFacturation(String adresseFacturation) {
+	public void setAdresseFacturation(Adresse adresseFacturation) {
 		this.adresseFacturation = adresseFacturation;
 	}
 
 
-	public String getAdresseLivraison() {
+	public Adresse getAdresseLivraison() {
 		return adresseLivraison;
 	}
 
 
-	public void setAdresseLivraison(String adresseLivraison) {
+	public void setAdresseLivraison(Adresse adresseLivraison) {
 		this.adresseLivraison = adresseLivraison;
 	}
 
 
-	public Long getCartePaiementDefaut() {
+	public CartePaiement getCartePaiementDefaut() {
 		return cartePaiementDefaut;
 	}
 
 
-	public void setCartePaiementDefaut(Long cartePaiementDefaut) {
+	public void setCartePaiementDefaut(CartePaiement cartePaiementDefaut) {
 		this.cartePaiementDefaut = cartePaiementDefaut;
 	}
 
 
-	public Integer getUtilisateur() {
+	public Utilisateur getUtilisateur() {
 		return utilisateur;
 	}
 
 
-	public void setUtilisateur(Integer utilisateur) {
+	public void setUtilisateur(Utilisateur utilisateur) {
 		this.utilisateur = utilisateur;
 	}
 
@@ -161,4 +188,5 @@ public class Commande {
 	}
 
 
+	
 }

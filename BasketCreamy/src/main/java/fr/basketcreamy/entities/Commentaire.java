@@ -32,7 +32,7 @@ public class Commentaire {
 		
 	}
 
-	public Commentaire(String texte, byte note, Integer article, Integer utilisateur) {
+	public Commentaire(String texte, byte note, Article article, Utilisateur utilisateur) {
 		super();
 		this.texte = texte;
 		this.note = note;
@@ -64,19 +64,19 @@ public class Commentaire {
 		this.note = note;
 	}
 
-	public Integer getArticle() {
+	public Article getArticle() {
 		return article;
 	}
 
-	public void setArticle(Integer article) {
+	public void setArticle(Article article) {
 		this.article = article;
 	}
 
-	public Integer getUtilisateur() {
+	public Utilisateur getUtilisateur() {
 		return utilisateur;
 	}
 
-	public void setUtilisateur(Integer utilisateur) {
+	public void setUtilisateur(Utilisateur utilisateur) {
 		this.utilisateur = utilisateur;
 	}
 
