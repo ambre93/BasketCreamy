@@ -19,10 +19,3 @@ public interface IAdresseDao {
 	
 }
 
-
-
-//T get (Integer id) throws Exception;
-//int save (T t) throws Exception;
-//int insert (T t) throws Exception;
-//int update (T t) throws Exception;
-//int delete (T t) throws Exception;
