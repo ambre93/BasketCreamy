@@ -1,4 +1,4 @@
-package fr.basketcreamy.entities;
+package fr.basketcreamy.entities.pojo;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,25 +10,34 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "article_panier")
-public class ArticlePanier {
+@Table(name = "commentaire")
+public class Commentaire {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@OneToOne
+	private String texte;
+	private byte note;
+	
+	@ManyToOne
 	@JoinColumn(name = "article_id")
 	private Article article;
-	
-	private Integer quantite;
 	
 	@ManyToOne
 	@JoinColumn(name = "utilisateur_id", nullable = false, insertable = true)
 	private Utilisateur utilisateur;
 	
-	public ArticlePanier() {
+	public Commentaire() {
+		
+	}
 
+	public Commentaire(String texte, byte note, Article article, Utilisateur utilisateur) {
+		super();
+		this.texte = texte;
+		this.note = note;
+		this.article = article;
+		this.utilisateur = utilisateur;
 	}
 
 	public Integer getId() {
@@ -39,20 +48,28 @@ public class ArticlePanier {
 		this.id = id;
 	}
 
+	public String getTexte() {
+		return texte;
+	}
+
+	public void setTexte(String texte) {
+		this.texte = texte;
+	}
+
+	public byte getNote() {
+		return note;
+	}
+
+	public void setNote(byte note) {
+		this.note = note;
+	}
+
 	public Article getArticle() {
 		return article;
 	}
 
 	public void setArticle(Article article) {
 		this.article = article;
-	}
-
-	public Integer getQuantite() {
-		return quantite;
-	}
-
-	public void setQuantite(Integer quantite) {
-		this.quantite = quantite;
 	}
 
 	public Utilisateur getUtilisateur() {
@@ -63,5 +80,5 @@ public class ArticlePanier {
 		this.utilisateur = utilisateur;
 	}
 
-	
+
 }

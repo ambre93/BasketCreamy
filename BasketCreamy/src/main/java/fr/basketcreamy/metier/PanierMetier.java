@@ -1,7 +1,7 @@
 package fr.basketcreamy.metier;
 
-import fr.basketcreamy.entities.Article;
-import fr.basketcreamy.entities.ArticlePanier;
+import fr.basketcreamy.entities.pojo.Article;
+import fr.basketcreamy.entities.pojo.ArticlePanier;
 
 public class PanierMetier implements IPanierMetier {
 

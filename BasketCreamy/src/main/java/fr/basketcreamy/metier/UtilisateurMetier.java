@@ -11,26 +11,29 @@ import javax.crypto.spec.SecretKeySpec;
 
 import fr.basketcreamy.cryptage.algo.AlgorithmeCryptage;
 import fr.basketcreamy.cryptage.model.connection.MyDataSource;
-import fr.basketcreamy.entities.Utilisateur;
+import fr.basketcreamy.entities.dto.UtilisateurDto;
+import fr.basketcreamy.entities.pojo.Utilisateur;
 import fr.basketcreamy.enums.EnumCryptage;
 
 public class UtilisateurMetier implements IUtilisateurMetier {
 
 	private IParams params = new Params();
+	private Utilisateur utilisateur = new Utilisateur();
 	
 	@Override
-	public Utilisateur addUtilisateur(Utilisateur utilisateur) throws Exception {
+	public Utilisateur addUtilisateur(UtilisateurDto utilisateurDto) throws Exception {
 		
+		//TODO
 		Connection connection = MyDataSource.getInstance().getConnection();
 		String requete = "INSERT INTO utilisateur(nom, prenom, dateNaissance, isActif, profil, email, password, telephone) VALUES(?, ?, ?, ?, ?, ?, ?)";
 		PreparedStatement ps = connection.prepareStatement(requete, Statement.RETURN_GENERATED_KEYS);
-		ps.setString(1, utilisateur.getNom());
-		ps.setString(2, utilisateur.getPrenom());
-		ps.setString(3, utilisateur.getDateNaissance());
-		ps.setBoolean(4, utilisateur.isActif());
+		ps.setString(1, utilisateurDto.getNom());
+		ps.setString(2, utilisateurDto.getPrenom());
+		ps.setString(3, utilisateurDto.getDateNaissance());
+		ps.setBoolean(4, utilisateurDto.isActif());
 		//ps.setLong(5, utilisateur.getProfil());
-		ps.setString(6, utilisateur.getEmail());
-		ps.setString(7, utilisateur.getTelephone());
+		ps.setString(6, utilisateurDto.getEmail());
+		ps.setString(7, utilisateurDto.getTelephone());
 		
 		byte[] cleCryptage = params.getCleCryptagePwd();
 		SecretKey key = new SecretKeySpec(cleCryptage, 0, cleCryptage.length, EnumCryptage.AES.getAlgorithm());

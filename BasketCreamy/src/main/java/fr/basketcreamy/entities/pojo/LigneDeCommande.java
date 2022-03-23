@@ -1,4 +1,4 @@
-package fr.basketcreamy.entities;
+package fr.basketcreamy.entities.pojo;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
