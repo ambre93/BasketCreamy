@@ -23,7 +23,7 @@ public class Utilisateur {
 	private String nom;
 	private String prenom;
 	private String dateNaissance;
-	private boolean isActif;
+	private boolean isActif = false;
 	private EnumProfil profil;
 	private String email;
 	private byte[] password;
@@ -177,6 +177,11 @@ public class Utilisateur {
 
 	public void setPanier(List<ArticlePanier> panier) {
 		this.panier = panier;
+	}
+
+	public static Utilisateur getUserByEmail(String email2) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	
