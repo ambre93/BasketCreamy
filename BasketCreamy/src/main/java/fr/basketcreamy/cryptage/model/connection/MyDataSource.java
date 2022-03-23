@@ -1,5 +1,7 @@
 package fr.basketcreamy.cryptage.model.connection;
 
+
+// DAO initialise la connexion à la base de donnée
 import java.sql.Connection;
 import java.sql.DriverManager;
 
@@ -21,7 +23,7 @@ public final class MyDataSource {
 	public Connection getConnection() throws Exception {
 
 		String login = "root";
-		String password = "3xj9tv5T#@";
+		String password = "";
 		String url = "jdbc:mysql://127.0.0.1:3306/basketecom_db";
 
 		
