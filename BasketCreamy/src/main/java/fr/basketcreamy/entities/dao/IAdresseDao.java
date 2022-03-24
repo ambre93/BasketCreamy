@@ -11,7 +11,6 @@ public interface IAdresseDao {
 	List<Adresse> getAll() throws Exception;
 	Adresse addAdresse  (Adresse adresse) throws Exception;
 	Adresse saveAdresse ( Adresse adresse) throws Exception;
-	Adresse insertAdresse (Adresse adresse) throws Exception;
 	Adresse updateAdresse (Adresse adresse) throws Exception;
 	Adresse deleteAdresse (Adresse adresse) throws Exception;
 	

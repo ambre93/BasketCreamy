@@ -7,7 +7,6 @@ public interface IArticleDao {
 	IArticleDao getArticleInSolde(Integer solde) throws Exception;
 	IArticleDao addArticle(IArticleDao article) throws Exception;
 	IArticleDao saveArticle (IArticleDao article) throws Exception;
-	IArticleDao insertArticle (IArticleDao article) throws Exception;
 	IArticleDao updateArticle (IArticleDao article) throws Exception;
 	IArticleDao deleteArticle (IArticleDao article) throws Exception;
 	
