@@ -30,21 +30,21 @@ public class CartePaiement {
 	
 	@ManyToOne
 	@JoinColumn(name = "utilisateur_id", nullable = false, insertable = true)
-	private Utilisateur utilisateur;
+	private User user;
 	
 	public CartePaiement() {
 		
 	}
 	
 	public CartePaiement(String nomProprietaire, String prenomProprietaire, byte[] numero, Date dateFinValidite,
-			byte[] cryptogramme, Utilisateur utilisateur) {
+			byte[] cryptogramme, User user) {
 		super();
 		this.nomProprietaire = nomProprietaire;
 		this.prenomProprietaire = prenomProprietaire;
 		this.numero = numero;
 		this.dateFinValidite = dateFinValidite;
 		this.cryptogramme = cryptogramme;
-		this.utilisateur = utilisateur;
+		this.user = user;
 	}
 
 	public Integer getId() {
@@ -84,12 +84,12 @@ public class CartePaiement {
 		this.cryptogramme = cryptogramme;
 	}
 
-	public Utilisateur getUtilisateur() {
-		return utilisateur;
+	public User getUtilisateur() {
+		return user;
 	}
 
-	public void setUtilisateur(Utilisateur utilisateur) {
-		this.utilisateur = utilisateur;
+	public void setUtilisateur(User user) {
+		this.user = user;
 	}
 		
 	

@@ -16,7 +16,7 @@ import fr.basketcreamy.enums.EnumProfil;
 
 @Entity
 @Table(name = "utilisateur")
-public class Utilisateur {
+public class User {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -45,7 +45,7 @@ public class Utilisateur {
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "utilisateur")
 	private List<ArticlePanier> panier;
 	
-	public Utilisateur() {
+	public User() {
 		
 	}
 
@@ -161,7 +161,7 @@ public class Utilisateur {
 		this.panier = panier;
 	}
 
-	public static Utilisateur getUserByEmail(String email2) {
+	public static User getUserByEmail(String email2) {
 		// TODO Auto-generated method stub
 		return null;
 	}

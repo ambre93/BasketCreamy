@@ -7,11 +7,11 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 
-import fr.basketcreamy.entities.dto.UtilisateurDto;
+import fr.basketcreamy.entities.dto.UserDto;
 
 @ManagedBean(name = "utilisateurBean")
 @SessionScoped
-public class UtilisateurBean {
+public class UserBean {
 
 	private String id;
 
@@ -44,7 +44,7 @@ public class UtilisateurBean {
 		messageError = "";
 	}
 	
-	public UtilisateurBean() {
+	public UserBean() {
 	}
 
 	public List<String> getSituations() {
@@ -53,32 +53,32 @@ public class UtilisateurBean {
 	
 	public String ajouter() {
 		
-		UtilisateurBean.messageSuccess = "";
-		UtilisateurBean.messageError = "";
+		UserBean.messageSuccess = "";
+		UserBean.messageError = "";
 		
 		if (!motDePasse.equals(motDePasseConfirmation)) {
-			UtilisateurBean.messageError = "Les deux mots de passe ne correspondent pas !\nVeuillez réessayer";
+			UserBean.messageError = "Les deux mots de passe ne correspondent pas !\nVeuillez réessayer";
 			return "";
 		}
 		
-		UtilisateurDto utilisateurDto = new UtilisateurDto();
-		utilisateurDto.setNom(nom);
-		utilisateurDto.setPrenom(prenom);
-		utilisateurDto.setGenre(genre);
-		utilisateurDto.setEmail(email);
-		utilisateurDto.setPassword(motDePasse);
-		utilisateurDto.setDateNaissance(dateNaissance);
-		utilisateurDto.setSituation(situation);
+		UserDto userDto = new UserDto();
+		userDto.setNom(nom);
+		userDto.setPrenom(prenom);
+		userDto.setGenre(genre);
+		userDto.setEmail(email);
+		userDto.setPassword(motDePasse);
+		userDto.setDateNaissance(dateNaissance);
+		userDto.setSituation(situation);
 		
 		IUserMetier userMetier = new UserMetier();
 		try {
-			UtilisateurDto addedUtilisateurDto = userMetier.addUser(utilisateurDto);
+			UserDto addedUtilisateurDto = userMetier.addUser(userDto);
 			this.id = addedUtilisateurDto.getId();
-			UtilisateurBean.messageSuccess = "Utilisateur crée avec succès.";
+			UserBean.messageSuccess = "User crée avec succès.";
 			
 		} catch (Exception e) {
 			System.out.println(e);
-			UtilisateurBean.messageError = "Erreur lors de la création de l'utilisateur !\n " + e.getMessage();
+			UserBean.messageError = "Erreur lors de la création de l'utilisateur !\n " + e.getMessage();
 		}
 		return "";
 	}
@@ -169,19 +169,19 @@ public class UtilisateurBean {
 	}
 
 	public String getMessageSuccess() {
-		return UtilisateurBean.messageSuccess;
+		return UserBean.messageSuccess;
 	}
 
 	public void setMessageSuccess(String messageSuccess) {
-		UtilisateurBean.messageSuccess = messageSuccess;
+		UserBean.messageSuccess = messageSuccess;
 	}
 
 	public String getMessageError() {
-		return UtilisateurBean.messageError;
+		return UserBean.messageError;
 	}
 
 	public void setMessageError(String messageError) {
-		UtilisateurBean.messageError = messageError;
+		UserBean.messageError = messageError;
 	}
 
 }

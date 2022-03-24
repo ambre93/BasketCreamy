@@ -26,18 +26,18 @@ public class Commentaire {
 	
 	@ManyToOne
 	@JoinColumn(name = "utilisateur_id", nullable = false, insertable = true)
-	private Utilisateur utilisateur;
+	private User user;
 	
 	public Commentaire() {
 		
 	}
 
-	public Commentaire(String texte, byte note, Article article, Utilisateur utilisateur) {
+	public Commentaire(String texte, byte note, Article article, User user) {
 		super();
 		this.texte = texte;
 		this.note = note;
 		this.article = article;
-		this.utilisateur = utilisateur;
+		this.user = user;
 	}
 
 	public Integer getId() {
@@ -72,12 +72,12 @@ public class Commentaire {
 		this.article = article;
 	}
 
-	public Utilisateur getUtilisateur() {
-		return utilisateur;
+	public User getUtilisateur() {
+		return user;
 	}
 
-	public void setUtilisateur(Utilisateur utilisateur) {
-		this.utilisateur = utilisateur;
+	public void setUtilisateur(User user) {
+		this.user = user;
 	}
 
 

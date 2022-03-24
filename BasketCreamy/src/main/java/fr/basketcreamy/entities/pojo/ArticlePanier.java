@@ -25,7 +25,7 @@ public class ArticlePanier {
 	
 	@ManyToOne
 	@JoinColumn(name = "utilisateur_id", nullable = false, insertable = true)
-	private Utilisateur utilisateur;
+	private User user;
 	
 	public ArticlePanier() {
 
@@ -55,12 +55,12 @@ public class ArticlePanier {
 		this.quantite = quantite;
 	}
 
-	public Utilisateur getUtilisateur() {
-		return utilisateur;
+	public User getUtilisateur() {
+		return user;
 	}
 
-	public void setUtilisateur(Utilisateur utilisateur) {
-		this.utilisateur = utilisateur;
+	public void setUtilisateur(User user) {
+		this.user = user;
 	}
 
 	

@@ -1,6 +1,6 @@
 package fr.basketcreamy.entities.dto;
 
-public class UtilisateurDto {
+public class UserDto {
 	private String id;
 	private String nom;
 	private String prenom;
@@ -11,7 +11,7 @@ public class UtilisateurDto {
 	private String password;
 	private String telephone;
 	
-	public UtilisateurDto() {
+	public UserDto() {
 	}
 
 	public String getId() {

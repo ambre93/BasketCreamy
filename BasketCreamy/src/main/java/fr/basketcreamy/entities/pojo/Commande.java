@@ -41,7 +41,7 @@ public class Commande {
 	
 	@ManyToOne
 	@JoinColumn(name = "utilisateur_id", nullable = false, insertable = true)
-	private Utilisateur utilisateur;
+	private User user;
 	
 	@OneToMany(mappedBy="lignes_commande")
 	private List<LigneDeCommande> lignesCommande;
@@ -54,7 +54,7 @@ public class Commande {
 
 	public Commande(Integer numero, Date dateCreation, Date dateLivraison, Double totalRemise, Double fraisExpedition,
 			Double totalGeneral, Adresse adresseFacturation, Adresse adresseLivraison,
-			CartePaiement cartePaiementDefaut, Utilisateur utilisateur, List<LigneDeCommande> lignesCommande) {
+			CartePaiement cartePaiementDefaut, User user, List<LigneDeCommande> lignesCommande) {
 		super();
 		this.numero = numero;
 		this.dateCreation = dateCreation;
@@ -65,7 +65,7 @@ public class Commande {
 		this.adresseFacturation = adresseFacturation;
 		this.adresseLivraison = adresseLivraison;
 		this.cartePaiementDefaut = cartePaiementDefaut;
-		this.utilisateur = utilisateur;
+		this.user = user;
 		this.lignesCommande = lignesCommande;
 	}
 
@@ -168,13 +168,13 @@ public class Commande {
 	}
 
 
-	public Utilisateur getUtilisateur() {
-		return utilisateur;
+	public User getUtilisateur() {
+		return user;
 	}
 
 
-	public void setUtilisateur(Utilisateur utilisateur) {
-		this.utilisateur = utilisateur;
+	public void setUtilisateur(User user) {
+		this.user = user;
 	}
 
 
