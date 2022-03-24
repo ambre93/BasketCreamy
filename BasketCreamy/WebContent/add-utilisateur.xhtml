@@ -6,7 +6,7 @@
 	  xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-	<title>Insert title here</title>
+	<title>Basket Creamy</title>
 </h:head>
 <h:body>
 <ui:composition template="/resources/template/layout.xhtml">
@@ -43,19 +43,7 @@
 						</h:inputText>
 						<h:message for="dateNaissance" style="color:red"></h:message>
 						
-						<h:outputLabel value="Adresse facturation : "></h:outputLabel>
-						<h:inputText id="adresseFact" value="#{userBean.adresseFact}" required="true" requiredMessage="L'adresse de facturation est obligatoire!">
-							
-						</h:inputText>
-						<h:message for="adresseFact" style="color:red"></h:message>
-						
-						<h:outputLabel value="Adresse livraison : "></h:outputLabel>
-						<h:inputText id="adresseLiv" value="#{userBean.adresseLiv}">
-						
-						</h:inputText>
-						<h:message for="adresseLiv" style="color:red"></h:message>
-						
-						<h:outputLabel value="Telephone : "></h:outputLabel>
+												<h:outputLabel value="Telephone : "></h:outputLabel>
 						<h:inputText id="telephone" value="#{userBean.telephone}" required="true" requiredMessage="Le numéro de téléphone est obligatoire (entre 10 et 13 caractères) !"
 									validatorMessage="Le format du numéro de téléphone est incorrect !">
 							<f:validateLength minimum="10" maximum="13" />
@@ -85,6 +73,57 @@
 							<f:validateLength minimum="3" maximum="20" />
 						</h:inputSecret>
 						<h:message for="motDePasseConfirmation" style="color:red"></h:message>
+						
+						
+						
+						<h:outputLabel value="Numero rue : "></h:outputLabel>
+						<h:inputText id="numeroFact" value="#{userBean.numeroFact}" required="true" requiredMessage="L'adresse de facturation est obligatoire!">
+							
+						</h:inputText>
+						<h:message for="numeroFact" style="color:red"></h:message>
+						
+						<h:outputLabel value="Rue: "></h:outputLabel>
+						<h:inputText id="rueFact" value="#{userBean.rueFact}" required="true" requiredMessage="L'adresse de facturation est obligatoire!">
+							
+						</h:inputText>
+						<h:message for="rueFact" style="color:red"></h:message>
+						
+						<h:outputLabel value="Ville : "></h:outputLabel>
+						<h:inputText id="villeFact" value="#{userBean.villeFact}" required="true" requiredMessage="L'adresse de facturation est obligatoire!">
+							
+						</h:inputText>
+						<h:message for="villeFact" style="color:red"></h:message>
+						
+						<h:outputLabel value="Code postal: "></h:outputLabel>
+						<h:inputText id="codePostalFact" value="#{userBean.codePostalFact}" required="true" requiredMessage="L'adresse de facturation est obligatoire!">
+							
+						</h:inputText>
+						<h:message for="codePostalFact" style="color:red"></h:message>
+						
+						<h:outputLabel value="Numero rue livraison : "></h:outputLabel>
+						<h:inputText id="numeroLiv" value="#{userBean.numeroLiv}" required="true" requiredMessage="L'adresse de facturation est obligatoire!">
+							
+						</h:inputText>
+						<h:message for="numeroLiv" style="color:red"></h:message>
+						
+						<h:outputLabel value="Rue livraison "></h:outputLabel>
+						<h:inputText id="rueLiv" value="#{userBean.rueLiv}" required="true" requiredMessage="L'adresse de facturation est obligatoire!">
+							
+						</h:inputText>
+						<h:message for="rueLiv" style="color:red"></h:message>
+						
+						<h:outputLabel value="Ville livraison : "></h:outputLabel>
+						<h:inputText id="villeLiv" value="#{userBean.villeLiv}" required="true" requiredMessage="L'adresse de facturation est obligatoire!">
+							
+						</h:inputText>
+						<h:message for="villeLiv" style="color:red"></h:message>
+						
+						<h:outputLabel value="Code postal livraison "></h:outputLabel>
+						<h:inputText id="codePostalLiv" value="#{userBean.codePostalLiv}" required="true" requiredMessage="L'adresse de facturation est obligatoire!">
+							
+						</h:inputText>
+						<h:message for="codePostalLiv" style="color:red"></h:message>
+						
 						
 						<h:outputLabel value="Numero carte de paiement : "></h:outputLabel>
 						<h:inputSecret id="numCarte" value="#{userBean.numCarte}"
