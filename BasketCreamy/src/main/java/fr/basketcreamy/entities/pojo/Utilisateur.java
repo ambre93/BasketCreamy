@@ -1,5 +1,6 @@
 package fr.basketcreamy.entities.pojo;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -22,7 +23,7 @@ public class Utilisateur {
 	private Integer id;
 	private String nom;
 	private String prenom;
-	private String dateNaissance;
+	private Date dateNaissance;
 	private boolean isActif = false;
 	private EnumProfil profil;
 	private String email;
@@ -46,25 +47,6 @@ public class Utilisateur {
 	
 	public Utilisateur() {
 		
-	}
-
-	public Utilisateur(String nom, String prenom, String dateNaissance, boolean isActif, EnumProfil profil, String email,
-			byte[] password, String telephone, List<Adresse> adresses, List<Commande> commandes,
-			List<CartePaiement> cartesDePaiement, List<Commentaire> commentaires, List<ArticlePanier> panier) {
-		super();
-		this.nom = nom;
-		this.prenom = prenom;
-		this.dateNaissance = dateNaissance;
-		this.isActif = isActif;
-		this.profil = profil;
-		this.email = email;
-		this.password = password;
-		this.telephone = telephone;
-		this.adresses = adresses;
-		this.commandes = commandes;
-		this.cartesDePaiement = cartesDePaiement;
-		this.commentaires = commentaires;
-		this.panier = panier;
 	}
 
 	public Integer getId() {
@@ -91,12 +73,12 @@ public class Utilisateur {
 		this.prenom = prenom;
 	}
 
-	public String getDateNaissance() {
+	public Date getDateNaissance() {
 		return dateNaissance;
 	}
 
-	public void setDateNaissance(String string) {
-		this.dateNaissance = string;
+	public void setDateNaissance(Date date) {
+		this.dateNaissance = date;
 	}
 
 	public boolean isActif() {

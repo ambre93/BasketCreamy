@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+	
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Insert title here</title>
+</h:head>
+<h:body>
+<ui:composition template="/resources/template/layout.xhtml">
+		<ui:define name="content">
+			<h:form id="formUser">
+				
+				<h:panelGroup id="panelUser">
+					<h:panelGrid columns="3" cellspacing="0" cellpadding="2">
+						<h:outputLabel value="Genre : "></h:outputLabel>
+						<h:selectOneRadio id="genre" value="#{utilisateurBean.genre}" required="true" requiredMessage="Le Genre est obligatoire">
+							<f:selectItem itemLabel="Monsieur" itemValue="M."></f:selectItem>
+							<f:selectItem itemLabel="Madame" itemValue="Mme"></f:selectItem>
+							<f:selectItem itemLabel="Mademoiselle" itemValue="Mlle"></f:selectItem>
+						</h:selectOneRadio>
+						<h:message for="genre" style="color:red"></h:message>
+					</h:panelGrid>
+					
+					<h:panelGrid columns="3" cellspacing="0" cellpadding="8">
+						<h:outputLabel value="Id : " style="color:blue"></h:outputLabel>
+						<h:inputText id="ident" value="#{utilisateurBean.id}" disabled="true"
+									readonly="true" style="color:blue">
+						</h:inputText>
+						<h:outputText></h:outputText>
+						
+						<h:outputLabel value="Nom : "></h:outputLabel>
+						<h:inputText id="nom" value="#{utilisateurBean.nom}" required="true" requiredMessage="Le Nom est obligatoire (entre 2 et 20 caractères) !">
+							<f:validateLength minimum="2" maximum="20" />
+						</h:inputText>
+						<h:message for="nom" style="color:red"></h:message>
+		
+						<h:outputLabel value="Prénom : "></h:outputLabel>
+						<h:inputText id="prenom" value="#{utilisateurBean.prenom}" required="true" requiredMessage="Le Prénom est obligatoire (entre 2 et 20 caractères) !">
+							<f:validateLength minimum="2" maximum="20" />
+						</h:inputText>
+						<h:message for="prenom" style="color:red"></h:message>
+		
+						<h:outputLabel value="Email : "></h:outputLabel>
+						<h:inputText id="email" value="#{utilisateurBean.email}" required="true" requiredMessage="L'email est obligatoire (entre 6 et 20 caractères) !"
+									validatorMessage="Le format de l'Email est incorrect !">
+							<f:validateLength minimum="6" maximum="30" />
+							<f:validateRegex pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"></f:validateRegex>
+						</h:inputText>
+						<h:message for="email" style="color:red"></h:message>
+						
+						<h:outputLabel value="Mot de passe : "></h:outputLabel>
+						<h:inputSecret id="motDePasse" value="#{utilisateurBean.motDePasse}"
+									required="true" requiredMessage="Le Mot de passe est obligatoire !">
+							<f:validateLength minimum="3" maximum="20" />
+						</h:inputSecret>
+						<h:message for="motDePasse" style="color:red"></h:message>
+						
+						<h:outputLabel value="Mot de passe (confirmation) : "></h:outputLabel>
+						<h:inputSecret id="motDePasseConfirmation" value="#{utilisateurBean.motDePasseConfirmation}"
+									required="true" requiredMessage="Le Mot de passe de confirmation est obligatoire !">
+							<f:validateLength minimum="3" maximum="20" />
+						</h:inputSecret>
+						<h:message for="motDePasseConfirmation" style="color:red"></h:message>
+						
+						<h:outputLabel value="Date de naissance : "></h:outputLabel>
+						<h:inputText id="dateNaissance" value="#{utilisateurBean.dateNaissance}"
+									required="true" requiredMessage="La date de naissance est obligatoire !"
+									validatorMessage="Date de naissance incorrecte ! Elle doit être au format jj/mm/aaaa">
+							<f:validateRegex pattern="^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$"></f:validateRegex>
+		<!-- 					<f:convertDateTime pattern="dd/MM/yyyy"></f:convertDateTime> il faut mettre dateNaissance en type Date dans le utilisateurBean -->
+						</h:inputText>
+						<h:message for="dateNaissance" style="color:red"></h:message>
+						
+						<h:outputLabel value="Situation : "></h:outputLabel>
+						<h:selectOneMenu id="situation" value="#{utilisateurBean.situation}"
+										required="true" requiredMessage="La situation est obligatoire !">
+							<f:selectItems value="#{utilisateurBean.getSituations()}" var="s"
+										itemLabel="#{s}" itemValue="#{s}"></f:selectItems>
+						</h:selectOneMenu>
+						<h:message for="situation" style="color:red"></h:message>
+						
+					</h:panelGrid>
+					
+				</h:panelGroup>
+				
+				<h:panelGroup id="panelMessages">
+					<h:panelGrid columns="1" cellspacing="0" cellpadding="0">
+						<h:outputText value="#{utilisateurBean.messageSuccess}" style="color:green"></h:outputText>
+						<h:outputText value="#{utilisateurBean.messageError}" style="color:red"></h:outputText>
+					</h:panelGrid>
+				</h:panelGroup>
+		
+				<h:panelGroup id="panelButtons">
+					<h:panelGrid columns="3" cellspacing="0" cellpadding="8">
+						<h:commandButton id="addUser" value="Ajouter utilisateur" action="#{utilisateurBean.ajouter()}"></h:commandButton>
+					</h:panelGrid>
+				</h:panelGroup>
+				
+			</h:form>
+			
+			<h:form>
+				<h:panelGroup id="panelButtons">
+					<h:panelGrid columns="3" cellspacing="0" cellpadding="8">
+						<h:commandButton id="raz" value="Réinitialiser" action="#{utilisateurBean.initialiser()}"></h:commandButton>
+					</h:panelGrid>
+				</h:panelGroup>
+			</h:form>
+			
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>
