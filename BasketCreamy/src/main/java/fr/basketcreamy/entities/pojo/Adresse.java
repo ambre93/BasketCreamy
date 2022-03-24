@@ -19,6 +19,7 @@ public class Adresse {
 	private String numero;
 	private String rue;
 	private String codePostal;
+	private String ville;
 	
 	@ManyToOne
 	@JoinColumn(name = "utilisateur_id", nullable = false, insertable = true)
@@ -28,7 +29,7 @@ public class Adresse {
 		
 	}
 
-	public Adresse(String numero, String rue, String codePostal, User user) {
+	public Adresse(Integer id, String numero, String rue, String codePostal, User user) {
 		super();
 		this.numero = numero;
 		this.rue = rue;
@@ -78,7 +79,21 @@ public class Adresse {
 		this.user = user;
 	}
 
+	public String getVille() {
+		return ville;
+	}
 
+	public void setVille(String ville) {
+		this.ville = ville;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
 	
 	
 	

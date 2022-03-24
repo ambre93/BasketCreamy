@@ -74,8 +74,8 @@ public class UserDao implements IUserDao {
 		return user;
 	}
 	
-	@Override
-	public User getUserById(Integer userId) throws Exception {
+	
+	public static User getUserById(Integer userId) throws Exception {
 		Connection connection = MyDataSource.getInstance().getConnection();
 		
 		String requete = "SELECT * FROM user WHERE utilisateur_id = ?";

@@ -33,12 +33,6 @@ public class ArticleDao implements IArticleDao{
 	}
 
 	@Override
-	public IArticleDao insertArticle(IArticleDao article) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public IArticleDao updateArticle(IArticleDao article) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
@@ -50,4 +44,5 @@ public class ArticleDao implements IArticleDao{
 		return null;
 	}
 
+	
 }

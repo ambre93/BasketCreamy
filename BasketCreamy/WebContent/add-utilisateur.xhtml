@@ -76,78 +76,80 @@
 						
 						
 						
-						<h:outputLabel value="Numero rue : "></h:outputLabel>
-						<h:inputText id="numeroFact" value="#{adresseBean.numero}" required="true" requiredMessage="L'adresse de facturation est obligatoire!">
+						<div id="AdrFacturation">
+							<h:outputLabel value="Numero rue : "></h:outputLabel>
+							<h:inputText id="numeroFact" value="#{adresseBean.numero}" required="true" requiredMessage="L'adresse de facturation est obligatoire!">
+								
+							</h:inputText>
+							<h:message for="numeroFact" style="color:red"></h:message>
 							
-						</h:inputText>
-						<h:message for="numeroFact" style="color:red"></h:message>
-						
-						<h:outputLabel value="Rue: "></h:outputLabel>
-						<h:inputText id="rueFact" value="#{adresseBean.rue}" required="true" requiredMessage="L'adresse de facturation est obligatoire!">
+							<h:outputLabel value="Rue: "></h:outputLabel>
+							<h:inputText id="rueFact" value="#{adresseBean.rue}" required="true" requiredMessage="L'adresse de facturation est obligatoire!">
+								
+							</h:inputText>
+							<h:message for="rueFact" style="color:red"></h:message>
 							
-						</h:inputText>
-						<h:message for="rueFact" style="color:red"></h:message>
-						
-						<h:outputLabel value="Ville : "></h:outputLabel>
-						<h:inputText id="villeFact" value="#{adresseBean.ville}" required="true" requiredMessage="L'adresse de facturation est obligatoire!">
+							<h:outputLabel value="Ville : "></h:outputLabel>
+							<h:inputText id="villeFact" value="#{adresseBean.ville}" required="true" requiredMessage="L'adresse de facturation est obligatoire!">
+								
+							</h:inputText>
+							<h:message for="villeFact" style="color:red"></h:message>
 							
-						</h:inputText>
-						<h:message for="villeFact" style="color:red"></h:message>
-						
-						<h:outputLabel value="Code postal: "></h:outputLabel>
-						<h:inputText id="codePostalFact" value="#{adresseBean.codePostal}" required="true" requiredMessage="L'adresse de facturation est obligatoire!">
+							<h:outputLabel value="Code postal: "></h:outputLabel>
+							<h:inputText id="codePostalFact" value="#{adresseBean.codePostal}" required="true" requiredMessage="L'adresse de facturation est obligatoire!">
+								
+							</h:inputText>
+							<h:message for="codePostalFact" style="color:red"></h:message>
+						 </div>
+						<div id="AdrLivraison">
+							<h:outputLabel value="Numero rue livraison : "></h:outputLabel>
+							<h:inputText id="numeroLiv" value="#{adresseBean.numero}" required="true" requiredMessage="L'adresse de facturation est obligatoire!">
+								
+							</h:inputText>
+							<h:message for="numeroLiv" style="color:red"></h:message>
 							
-						</h:inputText>
-						<h:message for="codePostalFact" style="color:red"></h:message>
-						 
-						<h:outputLabel value="Numero rue livraison : "></h:outputLabel>
-						<h:inputText id="numeroLiv" value="#{adresseBean.numero}" required="true" requiredMessage="L'adresse de facturation est obligatoire!">
+							<h:outputLabel value="Rue livraison "></h:outputLabel>
+							<h:inputText id="rueLiv" value="#{adresseBean.rue}" required="true" requiredMessage="L'adresse de facturation est obligatoire!">
+								
+							</h:inputText>
+							<h:message for="rueLiv" style="color:red"></h:message>
 							
-						</h:inputText>
-						<h:message for="numeroLiv" style="color:red"></h:message>
-						
-						<h:outputLabel value="Rue livraison "></h:outputLabel>
-						<h:inputText id="rueLiv" value="#{adresseBean.rue}" required="true" requiredMessage="L'adresse de facturation est obligatoire!">
+							<h:outputLabel value="Ville livraison : "></h:outputLabel>
+							<h:inputText id="villeLiv" value="#{adresseBean.ville}" required="true" requiredMessage="L'adresse de facturation est obligatoire!">
+								
+							</h:inputText>
+							<h:message for="villeLiv" style="color:red"></h:message>
 							
-						</h:inputText>
-						<h:message for="rueLiv" style="color:red"></h:message>
-						
-						<h:outputLabel value="Ville livraison : "></h:outputLabel>
-						<h:inputText id="villeLiv" value="#{adresseBean.ville}" required="true" requiredMessage="L'adresse de facturation est obligatoire!">
+							<h:outputLabel value="Code postal livraison "></h:outputLabel>
+							<h:inputText id="codePostalLiv" value="#{adresseBean.codePostal}" required="true" requiredMessage="L'adresse de facturation est obligatoire!">
+								
+							</h:inputText>
+							<h:message for="codePostalLiv" style="color:red"></h:message> 
+						</div>
+						<div id="cartepaiement">
+							<h:outputLabel value="Numero carte de paiement : "></h:outputLabel>
+							<h:inputSecret id="numCarte" value="#{carteBean.numCarte}"
+										required="true" requiredMessage="Le numero de carte de paiement est obligatoire !">
+								<f:validateLength minimum="16" maximum="16" />
+							</h:inputSecret>
+							<h:message for="numCarte" style="color:red"></h:message>
 							
-						</h:inputText>
-						<h:message for="villeLiv" style="color:red"></h:message>
-						
-						<h:outputLabel value="Code postal livraison "></h:outputLabel>
-						<h:inputText id="codePostalLiv" value="#{adresseBean.codePostal}" required="true" requiredMessage="L'adresse de facturation est obligatoire!">
+							<h:outputLabel value="Date validite carte : "></h:outputLabel>
+							<h:inputText id="dateValidite" value="#{carteBean.dateValidite}"
+										required="true" requiredMessage="La date de validite est obligatoire !"
+										validatorMessage="Date incorrecte ! Elle doit être au format mm/aaaa">
+								<f:validateRegex pattern="^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$"></f:validateRegex>
+			<!-- 					<f:convertDateTime pattern="dd/MM/yyyy"></f:convertDateTime> il faut mettre dateNaissance en type Date dans le userBean -->
+							</h:inputText>
+							<h:message for="dateValidite" style="color:red"></h:message>
 							
-						</h:inputText>
-						<h:message for="codePostalLiv" style="color:red"></h:message> 
-						
-						
-						<h:outputLabel value="Numero carte de paiement : "></h:outputLabel>
-						<h:inputSecret id="numCarte" value="#{carteBean.numCarte}"
-									required="true" requiredMessage="Le numero de carte de paiement est obligatoire !">
-							<f:validateLength minimum="16" maximum="16" />
-						</h:inputSecret>
-						<h:message for="numCarte" style="color:red"></h:message>
-						
-						<h:outputLabel value="Date validite carte : "></h:outputLabel>
-						<h:inputText id="dateValidite" value="#{carteBean.dateValidite}"
-									required="true" requiredMessage="La date de validite est obligatoire !"
-									validatorMessage="Date incorrecte ! Elle doit être au format mm/aaaa">
-							<f:validateRegex pattern="^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$"></f:validateRegex>
-		<!-- 					<f:convertDateTime pattern="dd/MM/yyyy"></f:convertDateTime> il faut mettre dateNaissance en type Date dans le userBean -->
-						</h:inputText>
-						<h:message for="dateValidite" style="color:red"></h:message>
-						
-						<h:outputLabel value="Crypto : "></h:outputLabel>
-						<h:inputSecret id="crypto" value="#{carteBean.crypto}"
-									required="true" requiredMessage="Le crypto est obligatoire !">
-							<f:validateLength minimum="3" maximum="3" />
-						</h:inputSecret>
-						<h:message for="numCarte" style="color:red"></h:message>
-						
+							<h:outputLabel value="Crypto : "></h:outputLabel>
+							<h:inputSecret id="crypto" value="#{carteBean.crypto}"
+										required="true" requiredMessage="Le crypto est obligatoire !">
+								<f:validateLength minimum="3" maximum="3" />
+							</h:inputSecret>
+							<h:message for="numCarte" style="color:red"></h:message>
+						</div>
 					</h:panelGrid>		
 				</h:panelGroup>
 				
