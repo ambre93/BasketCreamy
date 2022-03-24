@@ -25,7 +25,7 @@ public class User {
 	private String prenom;
 	private Date dateNaissance;
 	private boolean isActif = false;
-	private EnumProfil profil;
+	private String profil;
 	private String email;
 	private byte[] password;
 	private String telephone;
@@ -89,11 +89,11 @@ public class User {
 		this.isActif = isActif;
 	}
 
-	public EnumProfil getProfil() {
+	public String getProfil() {
 		return profil;
 	}
 
-	public void setProfil(EnumProfil profil) {
+	public void setProfil(String profil) {
 		this.profil = profil;
 	}
 
