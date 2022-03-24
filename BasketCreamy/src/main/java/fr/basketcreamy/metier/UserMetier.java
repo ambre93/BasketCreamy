@@ -47,10 +47,12 @@ public class UserMetier implements IUserMetier {
 	public User seConnecter(String email, String password) throws Exception {
 		User user = User.getUserByEmail(email);
 		if (user != null) {
+			//TODO Vérifier si IsActif est à true
 			byte[] cleCryptage = params.getCleCryptagePwd();
 			Key key = new SecretKeySpec(cleCryptage, EnumCryptage.AES.getAlgorithm());
 			String passwordDataBase = AlgorithmeCryptage.decrypt(user.getPassword(), key, EnumCryptage.AES.getAlgorithm());
 			if (passwordDataBase.equals(password)) {
+				//TODO Mettre IsActif à true
 				return user;
 			}
 		}
@@ -59,7 +61,7 @@ public class UserMetier implements IUserMetier {
 
 	@Override
 	public User seDeconnecter(User user) throws Exception {
-		// TODO Auto-generated method stub
+		// TODO Mettre IsActif à false
 		return null;
 	}
 
