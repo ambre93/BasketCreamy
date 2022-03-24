@@ -8,8 +8,10 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 
 import fr.basketcreamy.entities.dto.UserDto;
+import fr.basketcreamy.metier.IUserMetier;
+import fr.basketcreamy.metier.UserMetier;
 
-@ManagedBean(name = "utilisateurBean")
+@ManagedBean(name = "userBean")
 @SessionScoped
 public class UserBean {
 
@@ -21,9 +23,6 @@ public class UserBean {
 	@ManagedProperty(value = "Albert")
 	private String prenom;
 
-	@ManagedProperty(value = "Mme")
-	private String genre;
-
 	@ManagedProperty(value = "camus@gmail.com")
 	private String email;
 	
@@ -33,9 +32,13 @@ public class UserBean {
 	@ManagedProperty(value = "25/03/1940")
 	private String dateNaissance;
 	
-	@ManagedProperty(value = "Stagiaire")
-	private String situation;
+	@ManagedProperty(value = "CLIENT")
+	private String profil;
+	
+	@ManagedProperty (value = "0142589475")
+	private String telephone;
 
+	
 	private static String messageSuccess;
 	private static String messageError;
 
@@ -64,15 +67,16 @@ public class UserBean {
 		UserDto userDto = new UserDto();
 		userDto.setNom(nom);
 		userDto.setPrenom(prenom);
-		userDto.setGenre(genre);
 		userDto.setEmail(email);
 		userDto.setPassword(motDePasse);
 		userDto.setDateNaissance(dateNaissance);
-		userDto.setSituation(situation);
+		userDto.setProfil(profil);
+		userDto.setTelephone(telephone);
+		
 		
 		IUserMetier userMetier = new UserMetier();
 		try {
-			UserDto addedUtilisateurDto = userMetier.addUser(userDto);
+			UserDto addedUtilisateurDto = userMetier.addUtilisateur(userDto);
 			this.id = addedUtilisateurDto.getId();
 			UserBean.messageSuccess = "User crée avec succès.";
 			
@@ -88,12 +92,12 @@ public class UserBean {
 		this.id = "";
 		this.nom = "";
 		this.prenom = "";
-		this.genre = "";
 		this.email = "";
 		this.motDePasse = "";
 		this.motDePasseConfirmation = "";
 		this.dateNaissance = "";
-		this.situation = "";
+		this.profil = "";
+		this.telephone = "";
 	}
 
 	public String getId() {
@@ -118,14 +122,6 @@ public class UserBean {
 
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
-	}
-
-	public String getGenre() {
-		return genre;
-	}
-
-	public void setGenre(String genre) {
-		this.genre = genre;
 	}
 
 	public String getEmail() {
@@ -160,14 +156,6 @@ public class UserBean {
 		this.dateNaissance = dateNaissance;
 	}
 
-	public String getSituation() {
-		return situation;
-	}
-
-	public void setSituation(String situation) {
-		this.situation = situation;
-	}
-
 	public String getMessageSuccess() {
 		return UserBean.messageSuccess;
 	}
@@ -182,6 +170,22 @@ public class UserBean {
 
 	public void setMessageError(String messageError) {
 		UserBean.messageError = messageError;
+	}
+
+	public String getProfil() {
+		return profil;
+	}
+
+	public void setProfil(String profil) {
+		this.profil = profil;
+	}
+
+	public String getTelephone() {
+		return telephone;
+	}
+
+	public void setTelephone(String telephone) {
+		this.telephone = telephone;
 	}
 
 }
