@@ -1,45 +1,32 @@
-package fr.basketcreamy.entities.dao;
+package fr.basketcreamy.model.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-import fr.basketcreamy.cryptage.model.connection.MyDataSource;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
+import javax.persistence.PersistenceContext;
+
 import fr.basketcreamy.entities.pojo.User;
+import fr.basketcreamy.entities.pojo.User2;
 import fr.basketcreamy.enums.EnumProfil;
+import fr.basketcreamy.model.connection.MyDataSource;
 
 public class UserDao implements IUserDao {
 
+	@PersistenceContext(unitName = "MySqlPersistence")
+	private EntityManager em;
+	
 	@Override
-	public User addUtilisateur(User user) throws Exception {
-		Connection connection = MyDataSource.getInstance().getConnection();
+	public void addUtilisateur(User2 user) throws Exception {
+//		EntityManager em = MyDataSource.getInstance().getEntityManager();
 		
-		String requete = "INSERT INTO utilisateur(nom, prenom, email, password, profil, telephone) VALUES(?, ?, ?, ?, ?, ?)";
-		PreparedStatement ps = connection.prepareStatement(requete, Statement.RETURN_GENERATED_KEYS);
-		ps.setString(1, user.getNom());
-		ps.setString(2, user.getPrenom());
-		ps.setString(3, user.getEmail());
-		ps.setBytes(4, user.getPassword());
-		ps.setString(5, EnumProfil.CLIENT.getProfil());
-		ps.setString(6, user.getTelephone());
-		
-		ps.executeUpdate();
-		
-		ResultSet rs = ps.getGeneratedKeys();
-		
-		//Ajout Adresse
-		//Ajout Carte Paiement
-		if (rs.next()) {
-			user.setId(rs.getInt(1));
-		}
-		if (connection != null && !connection.isClosed()) {
-			connection.close();
-		}
-		
-		user.setProfil(EnumProfil.CLIENT.getProfil());
-		//user.setId(5);
-		return user;
+		EntityTransaction tx = em.getTransaction();
+		tx.begin();
+		em.persist(user);
+		tx.commit();
 	}
 
 	@Override

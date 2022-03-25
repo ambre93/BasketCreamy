@@ -1,10 +1,10 @@
 package fr.basketcreamy.entities.pojo;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -17,39 +17,25 @@ import fr.basketcreamy.enums.EnumProfil;
 
 @Entity
 @Table(name = "utilisateur")
-public class User {
+public class User2 {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String nom;
 	private String prenom;
-	@Column(name = "date_naissance")
 	private Date dateNaissance;
 	private boolean isActif = false;
 	private String profil;
-	@Column(name = "email", nullable = false, unique = true)
 	private String email;
 	private byte[] password;
 	private String telephone;
 	
-	@OneToMany(mappedBy="adresses")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user")
 	private List<Adresse> adresses;
 	
-	@OneToMany(mappedBy="commandes")
-	private List<Commande> commandes;
-	
-	@OneToMany(mappedBy="cartesDePaiement")
-	private List<CartePaiement> cartesDePaiement;
-	
-	@OneToMany(mappedBy="commentaires")
-	private List<Commentaire> commentaires;
-	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "utilisateur")
-	private List<ArticlePanier> panier;
-	
-	public User() {
-		
+	public User2() {
+		adresses = new ArrayList<Adresse>();
 	}
 
 	public Integer getId() {
@@ -128,47 +114,9 @@ public class User {
 		return adresses;
 	}
 
-	public void setAdresses(List<Adresse> adresses) {
-		this.adresses = adresses;
-	}
-
-	public List<Commande> getCommandes() {
-		return commandes;
-	}
-
-	public void setCommandes(List<Commande> commandes) {
-		this.commandes = commandes;
-	}
-
-	public List<CartePaiement> getCartesDePaiement() {
-		return cartesDePaiement;
-	}
-
-	public void setCartesDePaiement(List<CartePaiement> cartesDePaiement) {
-		this.cartesDePaiement = cartesDePaiement;
-	}
-
-	public List<Commentaire> getCommentaires() {
-		return commentaires;
-	}
-
-	public void setCommentaires(List<Commentaire> commentaires) {
-		this.commentaires = commentaires;
-	}
-
-	public List<ArticlePanier> getPanier() {
-		return panier;
-	}
-
-	public void setPanier(List<ArticlePanier> panier) {
-		this.panier = panier;
-	}
-
-	public static User getUserByEmail(String email2) {
+	public static User2 getUserByEmail(String email2) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
-	
 
 }

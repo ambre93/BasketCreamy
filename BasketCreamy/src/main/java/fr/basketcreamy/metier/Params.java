@@ -6,8 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import fr.basketcreamy.cryptage.keys.GenerateKeys;
-import fr.basketcreamy.cryptage.model.connection.MyDataSource;
 import fr.basketcreamy.enums.EnumCryptage;
+import fr.basketcreamy.model.connection.MyDataSource;
 
 public class Params implements IParams {
 

@@ -1,4 +1,4 @@
-package fr.basketcreamy.entities.dao;
+package fr.basketcreamy.model.dao;
 
 import fr.basketcreamy.entities.pojo.ArticlePanier;
 import fr.basketcreamy.entities.pojo.User;

@@ -1,4 +1,4 @@
-package fr.basketcreamy.entities.dao;
+package fr.basketcreamy.model.dao;
 
 import java.util.List;
 
@@ -7,7 +7,7 @@ import fr.basketcreamy.entities.pojo.Adresse;
 public interface IAdresseDao {
 
 
-	Adresse addAdresse  (Adresse adresse) throws Exception;
+	void addAdresse  (Adresse adresse) throws Exception;
 	Adresse updateAdresse (Adresse adresse) throws Exception;
 	void deleteAdresse (Adresse adresse) throws Exception;
 	Adresse getAdressById (Integer id) throws Exception;

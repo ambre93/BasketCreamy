@@ -1,4 +1,4 @@
-package fr.basketcreamy.entities.dao;
+package fr.basketcreamy.model.dao;
 
 public class ArticleDao implements IArticleDao{
 

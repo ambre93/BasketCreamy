@@ -7,11 +7,12 @@ import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 
 import fr.basketcreamy.cryptage.algo.AlgorithmeCryptage;
-import fr.basketcreamy.entities.dao.IUserDao;
-import fr.basketcreamy.entities.dao.UserDao;
 import fr.basketcreamy.entities.dto.UserDto;
 import fr.basketcreamy.entities.pojo.User;
+import fr.basketcreamy.entities.pojo.User2;
 import fr.basketcreamy.enums.EnumCryptage;
+import fr.basketcreamy.model.dao.IUserDao;
+import fr.basketcreamy.model.dao.UserDao;
 
 public class UserMetier implements IUserMetier {
 
@@ -22,7 +23,7 @@ public class UserMetier implements IUserMetier {
 		
 		// on crypte le mot de passe
 		// on convertit la date du String vers java.util.Date
-		User user = new User();
+		User2 user = new User2();
 		user.setNom(user.getNom());
 		user.setPrenom(userDto.getPrenom());
 		Date dateNaissance = new Date(userDto.getDateNaissance());
