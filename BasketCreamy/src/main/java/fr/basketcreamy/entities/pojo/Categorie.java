@@ -2,6 +2,7 @@ package fr.basketcreamy.entities.pojo;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,8 +18,13 @@ public class Categorie {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
+	@Column(name = "nom", nullable = false, unique = true)
 	private String nom;
+	
+	@Column(name = "remise")
 	private byte remise;
+	
+	@Column(name = "is_remise_cumulable")
 	private boolean isRemiseCumulable;
 	private String photo;
 	

@@ -2,6 +2,7 @@ package fr.basketcreamy.entities.pojo;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,14 +19,20 @@ public class CartePaiement {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
+	@Column(name = "nom_proprietaire", nullable = false)
 	private String nomProprietaire;
 	
+	@Column(name = "prenom_proprietaire", nullable = false)
 	private String prenomProprietaire;
 	
+	@Column(name = "numero", nullable = false, unique = true)
 	private byte[] numero;
 	
+	
+	@Column(name = "date_fin_validite", nullable = false)
 	private Date dateFinValidite;
 	
+	@Column(name = "email", nullable = false)
 	private byte[] cryptogramme;
 	
 	@ManyToOne
