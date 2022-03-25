@@ -2,7 +2,10 @@ package fr.basketcreamy.entities.pojo;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -17,16 +20,32 @@ public class Article {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
+	@Column(name = "nom" , nullable = false)
 	private String nom;
+	
+	@Column(name = "description", nullable = false)
 	private String description;
+	
+	@Column(name = "prix", nullable = false)
 	private Double prix;
-	private Integer remise;
-	private Integer stock;
-	private Boolean isVendable;
+	
+	@Column(name = "remise", nullable = false)
+	private Integer remise =0;
+	
+	@Column(name = "stock", nullable = false)
+	private Integer stock = 0;
+	
+	@Column(name = "isVendable")
+	private Boolean isVendable = true;
+	
+	@Column(name = "photos")
 	private String photos;
+	
+	@Column(name = "videos")
 	private String videos;
 	
-	@OneToMany(mappedBy="commentaires")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "article")
+	@Column(name = "commentaire")
 	private List<Commentaire> commentaires;
 	
 	public Article() {

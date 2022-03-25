@@ -32,7 +32,7 @@ public class CartePaiement {
 	@Column(name = "date_fin_validite", nullable = false)
 	private Date dateFinValidite;
 	
-	@Column(name = "email", nullable = false)
+	@Column(name = "cryptogramme", nullable = false)
 	private byte[] cryptogramme;
 	
 	@ManyToOne

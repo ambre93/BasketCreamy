@@ -1,14 +1,16 @@
 package fr.basketcreamy.model.dao;
 
+import fr.basketcreamy.entities.pojo.Article;
+
 public interface IArticleDao {
 
-	IArticleDao getArticleById (Integer id) throws Exception;
-	IArticleDao getArticleInStock(Integer stock) throws Exception;
-	IArticleDao getArticleInSolde(Integer solde) throws Exception;
-	IArticleDao addArticle(IArticleDao article) throws Exception;
-	IArticleDao saveArticle (IArticleDao article) throws Exception;
-	IArticleDao updateArticle (IArticleDao article) throws Exception;
-	IArticleDao deleteArticle (IArticleDao article) throws Exception;
+	Article addArticle(Article article) throws Exception;
+
+	Article updateArticle(Article article) throws Exception;
+
+	void deleteArticle(Article article) throws Exception;
+
+	Article getArticleById(Integer id) throws Exception;
 	
 	
 }

@@ -21,11 +21,13 @@ public class Categorie {
 	@Column(name = "nom", nullable = false, unique = true)
 	private String nom;
 	
-	@Column(name = "remise")
-	private byte remise;
+	@Column(name = "remise", nullable = false)
+	private byte remise = 0;
 	
 	@Column(name = "is_remise_cumulable")
 	private boolean isRemiseCumulable;
+	
+	@Column(name = "photo")
 	private String photo;
 	
 	@OneToMany(mappedBy="articles")

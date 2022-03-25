@@ -95,8 +95,4 @@ public class Adresse {
 	public void setUser(User2 user2) {
 		this.user = user2;
 	}
-	
-	
-	
-
 }

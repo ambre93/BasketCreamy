@@ -16,12 +16,12 @@ import fr.basketcreamy.model.connection.MyDataSource;
 
 public class UserDao implements IUserDao {
 
-	@PersistenceContext(unitName = "MySqlPersistence")
-	private EntityManager em;
+	//@PersistenceContext(unitName = "MySqlPersistence")
+	//private EntityManager em;
 	
 	@Override
 	public void addUtilisateur(User2 user) throws Exception {
-//		EntityManager em = MyDataSource.getInstance().getEntityManager();
+		EntityManager em = MyDataSource.getInstance().getEntityManager();
 		
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();

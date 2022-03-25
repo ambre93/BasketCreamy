@@ -42,14 +42,14 @@ public class User2 {
 	@Column(name = "email", nullable = false, unique = true)
 	private String email;
 	
-	@Column(name = "password", nullable = false)
+	@Column(name = "password")//, nullable = false
 	private byte[] password;
 	
 	@Column(name = "telephone", nullable = false)
 	private String telephone;
 	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user")
-	private List<Adresse> adresses;
+	//@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user")
+	//private List<Adresse> adresses;
 	
 	public User2() {
 		adresses = new ArrayList<Adresse>();

@@ -15,7 +15,8 @@ public class Params implements IParams {
 
 	@Override
 	public byte[] getCleCryptagePwd() throws Exception {
-			
+		EntityManager em = MyDataSource.getInstance().getEntityManager();
+		
 		String requete = "SELECT cle_cryptage_pwd FROM params";
 		Connection connection = MyDataSource.getInstance().getConnection();
 		PreparedStatement ps = connection.prepareStatement(requete);

@@ -31,10 +31,10 @@ public class UserMetier implements IUserMetier {
 		user.setEmail(userDto.getEmail());
 		user.setTelephone(userDto.getTelephone());
 		
-		byte[] cleCryptage = params.getCleCryptagePwd();
-		SecretKey key = new SecretKeySpec(cleCryptage, 0, cleCryptage.length, EnumCryptage.AES.getAlgorithm());
-		byte[] passwordCrypte = AlgorithmeCryptage.encrypt(userDto.getPassword().toString(), key, EnumCryptage.AES.getAlgorithm());
-		user.setPassword(passwordCrypte);
+		//byte[] cleCryptage = params.getCleCryptagePwd();
+		//SecretKey key = new SecretKeySpec(cleCryptage, 0, cleCryptage.length, EnumCryptage.AES.getAlgorithm());
+		//byte[] passwordCrypte = AlgorithmeCryptage.encrypt(userDto.getPassword().toString(), key, EnumCryptage.AES.getAlgorithm());
+		//user.setPassword(passwordCrypte);
 		
 		IUserDao userDao = new UserDao();
 		userDao.addUtilisateur(user);
