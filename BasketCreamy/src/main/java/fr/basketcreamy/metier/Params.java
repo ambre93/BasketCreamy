@@ -5,6 +5,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import javax.persistence.EntityManager;
+
 import fr.basketcreamy.cryptage.keys.GenerateKeys;
 import fr.basketcreamy.enums.EnumCryptage;
 import fr.basketcreamy.model.connection.MyDataSource;
@@ -13,6 +15,7 @@ public class Params implements IParams {
 
 	@Override
 	public byte[] getCleCryptagePwd() throws Exception {
+			
 		String requete = "SELECT cle_cryptage_pwd FROM params";
 		Connection connection = MyDataSource.getInstance().getConnection();
 		PreparedStatement ps = connection.prepareStatement(requete);

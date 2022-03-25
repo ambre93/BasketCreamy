@@ -1,5 +1,6 @@
 package fr.basketcreamy.entities.pojo;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,9 +17,13 @@ public class Adresse {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
+	@Column(name = "numero", nullable = false)
 	private String numero;
+	@Column(name = "rue", nullable = false)
 	private String rue;
+	@Column(name = "code_postal", nullable = false)
 	private String codePostal;
+	@Column(name = "ville", nullable = false)
 	private String ville;
 	
 	@ManyToOne
