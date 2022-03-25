@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.PersistenceContext;
@@ -14,6 +15,7 @@ import fr.basketcreamy.entities.pojo.User2;
 import fr.basketcreamy.enums.EnumProfil;
 import fr.basketcreamy.model.connection.MyDataSource;
 
+@Stateless
 public class UserDao implements IUserDao {
 
 	//@PersistenceContext(unitName = "MySqlPersistence")
