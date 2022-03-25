@@ -22,15 +22,22 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	
+	@Column(name = "nom", nullable = false)
 	private String nom;
+	@Column(name = "prenom", nullable = false)
 	private String prenom;
 	@Column(name = "date_naissance")
 	private Date dateNaissance;
+	@Column(name = "is_actif", nullable = false)
 	private boolean isActif = false;
-	private String profil;
+	@Column(name = "profil", nullable = false)
+	private String profil = "CLIENT";
 	@Column(name = "email", nullable = false, unique = true)
 	private String email;
+	@Column(name = "password", nullable = false)
 	private byte[] password;
+	@Column(name = "telephone", nullable = false)
 	private String telephone;
 	
 	@OneToMany(mappedBy="adresses")

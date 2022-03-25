@@ -3,6 +3,7 @@ package fr.basketcreamy.entities.pojo;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,11 +21,17 @@ public class Commande {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	@Column(name = "numero", nullable = false, unique = true)
 	private Integer numero;
+	@Column(name = "date_creation", nullable = false)
 	private Date dateCreation;
+	@Column(name = "date_livraison", nullable = false)
 	private Date dateLivraison;
-	private Double totalRemise;
+	@Column(name = "total_remise", nullable = false)
+	private Double totalRemise = 0.00;
+	@Column(name = "frais_expedition", nullable = false)
 	private Double fraisExpedition;
+	@Column(name = "total_general", nullable = false)
 	private Double totalGeneral;
 	
 	@OneToOne
